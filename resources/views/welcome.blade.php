@@ -9,12 +9,25 @@
     </nav>
 </div>
 <div class="row">
+    <form action="/laravel/messages/create" method="post">
+        <div class= "form-group @if ($errors->has('message')) has-danger @endif">
+            {{ csrf_field() }}
+            <input type="text" name="message" class="form-control" placeholder="Qué estás pensando?">
+            @if ($errors->has('message'))
+                @foreach ($errors->get('message') as $error)
+                    <div class="form-control-feedback">{{ $error }}</div>
+                @endforeach
+            @endif
+        </div>
+    </form>
+</div>
+<div class="row">
     @forelse($messages as $message)
         <div class="col-6">
-            <img class= "img-thumbail" src = "{{$message->image}}">
+            <img class= "img-thumbnail" src = "{{$message->image}}">
             <p class="card-text">
                 {{ $message->content }}
-                <a href="/messages/{{ $message->id }}">Leer más</a>
+                <a href="/laravel/messages/{{ $message->id }}">Leer más</a>
             </p>
         </div>
     @empty

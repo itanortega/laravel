@@ -7,7 +7,7 @@ use App\Message;
 
 class PagesController extends Controller
 {
-    function home() {
+    public function home() {
         $messages = Message::all();
         return view('welcome', [
             'messages' => $messages
