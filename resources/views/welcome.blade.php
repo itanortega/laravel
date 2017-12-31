@@ -9,7 +9,7 @@
     </nav>
 </div>
 <div class="row">
-    <form action="/laravel/messages/create" method="post">
+    <form action="{{ url('messages/create')}}" method="post">
         <div class= "form-group @if ($errors->has('message')) has-danger @endif">
             {{ csrf_field() }}
             <input type="text" name="message" class="form-control" placeholder="Qué estás pensando?">
@@ -27,7 +27,7 @@
             <img class= "img-thumbnail" src = "{{$message->image}}">
             <p class="card-text">
                 {{ $message->content }}
-                <a href="/laravel/messages/{{ $message->id }}">Leer más</a>
+                <a href="{{ url('messages', $message->id) }}">Leer más</a>
             </p>
         </div>
     @empty
