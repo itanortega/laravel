@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/users/{username}', 'UserController@show');
 Route::get('/users/{username}/follows','UserController@follows');
+Route::get('/users/{username}/followers','UserController@followers');
 Route::post('/users/{username}/follow','UserController@follow');
+Route::post('/users/{username}/unfollow','UserController@unfollow');
